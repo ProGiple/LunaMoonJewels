@@ -1,0 +1,19 @@
+name: LunaMoonJewels
+version: '${project.version}'
+main: org.comp.progiple.lunamoonjewels.LunaMoonJewels
+api-version: '1.16'
+softdepend:
+  - PlaceholderAPI
+commands:
+  lunamoonjewels:
+    aliases:
+      - lmjewels
+      - lmj
+      - lunamoonj
+permissions:
+  lmjewels.admin:
+    default: op
+  lmjewels.balance:
+    default: true
+  lmjewels.balance.another:
+    default: true
