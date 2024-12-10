@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Command implements CommandExecutor, TabCompleter {
@@ -68,7 +69,7 @@ public class Command implements CommandExecutor, TabCompleter {
                     }
                     break;
                 case "payJewels", "pay":
-                    if (hasAdminPerm(sender)) {
+                    if (sender.hasPermission("lmjewels.pay")) {
                         if (args.length >= 3) {
                             String nick = args[1];
                             int value = Integer.parseInt(args[2]);
@@ -81,6 +82,7 @@ public class Command implements CommandExecutor, TabCompleter {
                         }
                         else this.noArgsMess(sender);
                     }
+                    else Tools.sendMessage(sender, "noPerm", "error");
                     break;
                 case "setJewels", "set":
                     if (hasAdminPerm(sender)) {
@@ -114,12 +116,7 @@ public class Command implements CommandExecutor, TabCompleter {
     public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, org.bukkit.command.@NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         List<String> list = new ArrayList<>();
         if (strings.length == 1) {
-            list.add("add");
-            list.add("reload");
-            list.add("take");
-            list.add("set");
-            list.add("pay");
-            list.add("balance");
+            list.addAll(Arrays.asList("add", "reload", "take", "set", "pay", "balance"));
         }
         else if (strings.length == 2) {
             for (Player player : Bukkit.getOnlinePlayers()) {

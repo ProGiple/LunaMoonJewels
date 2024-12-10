@@ -19,6 +19,8 @@ commands:
 permissions:
   lmjewels.admin:
     default: op
+  lmjewels.pay:
+    default: op
   lmjewels.balance:
     default: true
   lmjewels.balance.another:
